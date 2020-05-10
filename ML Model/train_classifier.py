@@ -39,8 +39,9 @@ def load_data(database_filepath):
     df = pd.read_sql("SELECT * FROM df", engine)
         
     # Create X and y datasets
-    X = df['message']
-    y = df.iloc[:, 4:]
+    df = df[df['related'] != 2]
+    X = np.array(df['message'])
+    y = df.drop(['id', 'message', 'original', 'genre'], axis=1)
     category_names = y.columns
     return X, y, category_names
 
@@ -79,7 +80,7 @@ def performance_metric(y_true, y_pred):
         """
     f1_list = []
     for i in range(np.shape(y_pred)[1]):
-        f1 = f1_score(np.array(y_true)[:, i], y_pred[:, i],average='micro')
+        f1 = f1_score(np.array(y_true)[:, i], y_pred[:, i])
         f1_list.append(f1)
         
     score = np.median(f1_list)
@@ -133,9 +134,9 @@ def get_eval_metrics(actual, predicted, col_names):
     
     # Calculate evaluation metrics for each set of labels
     for i in range(len(col_names)):
-        accuracy = accuracy_score(actual[:, i], predicted[:, i],average='micro')
-        precision = precision_score(actual[:, i], predicted[:, i],average='micro')
-        recall = recall_score(actual[:, i], predicted[:, i],average='micro')
+        accuracy = accuracy_score(actual[:, i], predicted[:, i])
+        precision = precision_score(actual[:, i], predicted[:, i])
+        recall = recall_score(actual[:, i], predicted[:, i])
         f1 = f1_score(actual[:, i], predicted[:, i])
         
         metrics.append([accuracy, precision, recall, f1])
