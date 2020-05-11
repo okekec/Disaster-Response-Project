@@ -9,7 +9,7 @@
 - Python Packages:
   - Machine Learning libraries such as NumPy, SciPy, Pandas, Sciki-Learn
   - XGBoost
-  - python oversampling package such as imblearn
+  - Python oversampling package such as imblearn
   - Regular expression operation python package such as re
   - Json
   - Natural Language Process libraries such as NLTK
@@ -22,15 +22,13 @@ The objective of this project is to analyze disaster data from Figure Eight to b
 ### Project Details
 
 #### Project Components
-1. ETL Pipeline
-In a Python script, *process_data.py*, write a data cleaning pipeline that:
-    - Loads the messages and categories datasets
-    - Merges the two datasets
-    - Cleans the data
-    - Stores it in a SQLite database
+1. ETL Pipeline: In a Python script, *process_data.py*, write a data cleaning pipeline that:
+      - Loads the messages and categories datasets
+      - Merges the two datasets
+      - Cleans the data
+      - Stores it in a SQLite database
 
-2. ML Pipeline
-In a Python script, *train_classifier.py*, write a machine learning pipeline that:
+2. ML Pipeline: In a Python script, *train_classifier.py*, write a machine learning pipeline that:
     - Loads data from the SQLite database
     - Splits the dataset into training and test sets
     - Builds a text processing and machine learning pipeline
@@ -38,8 +36,7 @@ In a Python script, *train_classifier.py*, write a machine learning pipeline tha
     - Outputs results on the test set
     - Exports the final model as a pickle file
   
-3.  Flask Web App 
-In a Python script, *run.py*, write a Flask file that runs the disaster response app. In this file you will do the following:
+3.  Flask Web App: In a Python script, *run.py*, write a Flask file that runs the disaster response app. In this file you will do the following:
     - Modify file paths for the database and model as needed
     - Add data visualizations using Plotly in the web app. 
   
